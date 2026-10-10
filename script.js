@@ -53,7 +53,7 @@ function prettyDate(key) {
       day: "numeric",
       month: "short",
       year: "numeric"
-    }
+    
   );
 }
 
