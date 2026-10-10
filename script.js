@@ -30,7 +30,7 @@ function saveReviews() {
   } catch (error) {
     console.error("Review save failed:", error);
     return false;
-  }
+  
 }
 }
 
@@ -53,7 +53,7 @@ function prettyDate(key) {
       day: "numeric",
       month: "short",
       year: "numeric"
-    
+    }
   );
 }
 
