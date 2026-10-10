@@ -21,10 +21,17 @@ function loadReviews() {
 
 // Save reviews
 function saveReviews() {
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(reviews)
-  );
+  try {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(reviews)
+    );
+    return true;
+  } catch (error) {
+    console.error("Review save failed:", error);
+    return false;
+  }
+}
 }
 
 // Get date in YYYY-MM-DD format
