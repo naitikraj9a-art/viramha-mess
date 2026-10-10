@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10152d">
+  <title>Viramha Mess | Reviews</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="node.js">
+</head>
+<body>
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#">
+      <div class="logo"><span>V</span><i></i></div>
+      <div>
+        <strong>VIRAMHA</strong>
+        <small>MESS REVIEWS</small>
+      </div>
+    </a>
+    <div class="today-pill">
+      <span class="live-dot"></span>
+      <span id="todayLabel">Today</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">✦ YOUR MESS. YOUR VOICE.</span>
+        <h1>Good food deserves<br><em>honest reviews.</em></h1>
+        <p>Rate today's meal, share your thoughts, and help make Viramha Mess better every day.</p>
+        <a class="primary-link" href="#reviewForm">Write a review <span>↘</span></a>
+
+        <div class="hero-stats">
+          <div>
+            <strong id="totalReviews">0</strong>
+            <span>Reviews saved</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div>
+            <strong><span id="averageRating">—</span><small>/ 5</small></strong>
+            <span>Average rating</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="photo-main">
+          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=900&q=85" alt="Indian thali">
+        </div>
+        <div class="photo-small">
+          <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=500&q=85" alt="Indian curry and rice">
+        </div>
+        <div class="floating-rating">
+          <span>★</span>
+          <div>
+            <strong id="floatingRating">—</strong>
+            <small>Community rating</small>
+          </div>
+        </div>
+        <div class="art-sparkle">✳</div>
+      </div>
+    </section>
+
+    <section class="meal-strip">
+      <div class="section-kicker">TODAY AT VIRAMHA</div>
+      <div class="meal-info">
+        <div class="meal-icon">🍽️</div>
+        <div>
+          <strong id="dayName">Loading day…</strong>
+          <span id="fullDate">Loading date…</span>
+        </div>
+      </div>
+      <div class="meal-note">
+        <span class="status-dot"></span>
+        Daily reviews are grouped by date
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <div class="review-panel panel" id="reviewForm">
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">HAVE YOUR SAY</span>
+            <h2>Rate today's meal</h2>
+          </div>
+          <span class="heading-icon">✎</span>
+        </div>
+
+        <form id="reviewFormElement">
+          <label for="reviewerName">Your name <span class="optional">Optional</span></label>
+          <input id="reviewerName" name="name" maxlength="40" placeholder="e.g. Naitik">
+
+          <label>How was the food today?</label>
+          <div class="rating-picker" role="radiogroup" aria-label="Choose a rating">
+            <button type="button" class="star-choice" data-rating="1">★</button>
+            <button type="button" class="star-choice" data-rating="2">★</button>
+            <button type="button" class="star-choice" data-rating="3">★</button>
+            <button type="button" class="star-choice" data-rating="4">★</button>
+            <button type="button" class="star-choice" data-rating="5">★</button>
+          </div>
+          <p class="rating-hint" id="ratingHint">Tap a star to rate</p>
+
+          <label for="mealType">Meal</label>
+          <select id="mealType" name="meal">
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch" selected>Lunch</option>
+            <option value="Snacks">Evening snacks</option>
+            <option value="Dinner">Dinner</option>
+          </select>
+
+          <label for="reviewText">Your review</label>
+          <textarea id="reviewText" name="review" rows="4" maxlength="500" placeholder="What was good? What could be better?" required></textarea>
+
+          <div class="form-bottom">
+            <span id="charCount">0 / 500</span>
+            <button class="submit-btn" type="submit">Post review <span>↗</span></button>
+          </div>
+          <p class="form-message" id="formMessage" role="status"></p>
+        </form>
+      </div>
+
+      <div class="records-column">
+        <section class="summary-card panel">
+          <div class="panel-heading">
+            <div>
+              <span class="section-kicker">THE VERDICT</span>
+              <h2>Mess mood</h2>
+            </div>
+            <span class="mood-emoji">✨</span>
+          </div>
+
+          <div class="big-score">
+            <strong id="bigAverage">—</strong>
+            <span class="out-of">/ 5</span>
+            <div class="score-stars" id="scoreStars">☆☆☆☆☆</div>
+          </div>
+          <p id="ratingSummary">Be the first to review today's meal.</p>
+          <div class="rating-bar"><span id="ratingBarFill"></span></div>
+          <div class="summary-foot">
+            <span>Based on all saved reviews</span>
+            <strong id="summaryCount">0 reviews</strong>
+          </div>
+        </section>
+
+        <section class="history-section">
+          <div class="history-heading">
+            <div>
+              <span class="section-kicker">REAL STUDENT FEEDBACK</span>
+              <h2>Recent reviews</h2>
+            </div>
+            <button class="text-button" id="exportBtn" type="button">Export records ↓</button>
+          </div>
+
+          <div class="filter-row">
+            <select id="dateFilter" aria-label="Filter by date">
+              <option value="all">All dates</option>
+            </select>
+            <select id="mealFilter" aria-label="Filter by meal">
+              <option value="all">All meals</option>
+              <option>Breakfast</option>
+              <option>Lunch</option>
+              <option>Snacks</option>
+              <option>Dinner</option>
+            </select>
+          </div>
+
+          <div id="reviewsList" class="reviews-list"></div>
+          <div id="emptyState" class="empty-state">
+            <div>🥄</div>
+            <strong>No reviews yet</strong>
+            <p>Start the conversation. Your feedback helps improve the mess!</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="food-gallery">
+      <div>
+        <span class="section-kicker">MADE FOR MESS LIFE</span>
+        <h2>Meals bring us together.</h2>
+      </div>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1567337710282-00832b415979?auto=format&fit=crop&w=700&q=80" alt="Indian curry meal">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80" alt="Fresh food bowl">
+        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80" alt="Freshly prepared food">
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="logo mini"><span>V</span><i></i></div>
+      <strong>VIRAMHA MESS</strong>
+    </div>
+    <span>Built for better meals, one review at a time.</span>
+    <span id="footerYear"></span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
